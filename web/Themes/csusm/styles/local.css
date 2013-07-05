@@ -1,0 +1,106 @@
+body{font-family: 'Source Sans Pro', sans-serif;font-size:13px;}
+.navbar-inner {
+min-height: 40px;
+padding-right: 20px;
+padding-left: 20px;
+background-color: #2C2C2C;
+background-image: -moz-linear-gradient(top,#333,#222);
+background-image: -ms-linear-gradient(top,#333,#222);
+background-image: -webkit-gradient(linear,0 0,0 100%,from(#333),to(#222));
+background-image: -webkit-linear-gradient(top,#333,#222);
+background-image: -o-linear-gradient(top,#333,#222);
+background-image: linear-gradient(top,#333,#222);
+background-repeat: repeat-x;
+-webkit-border-radius:0;
+-moz-border-radius: 0;
+border-radius: 0;
+border:none;
+filter: progid:dximagetransform.microsoft.gradient(startColorstr='#333333',endColorstr='#222222',GradientType=0);
+-webkit-box-shadow: none;
+-moz-box-shadow:none;
+box-shadow:none;}
+a:link,a:visited{font-weight: normal;}
+.navbar .divider-vertical {height: 40px;margin: 0 9px;border-left: 1px solid #343434;border-right: 1px solid #343434;}
+.navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active > .dropdown-toggle {
+background-color:#2C2C2C;}
+#banner #company div {width: auto;margin:0;}
+.icon-calendar:before {color: #fff;font-size: 16px;margin-right:6px;}
+div#contents, div.trailer {padding: 0;}
+div#contents{padding:0 10px;}
+#overview{min-height: 40px;clear:both;}
+#overview h1{font-size:24px;margin:0;padding:0;font-family: 'Courgette', cursive;float:left;}
+#company #more_info{display:none;}
+.navbar-inner{-webkit-border-radius: 0;-moz-border-radius: 0;border-radius: 0;}
+.navbar .brand {font-size: 18px}
+.navbar form{margin:8px 0 0}
+a:link,a:visited {color: #08C;text-decoration: none!important;}
+a:hover{text-decoration: none;}
+.navbar .nav > li > a {text-shadow:none;}
+#company li [class^="icon-"], #company li [class*=" icon-"] {font-size:16px;}
+#banner .dropdown-menu a {color:#333}
+#banner .dropdown-menu a:hover{color:#fff}
+#chat-panel iframe{height:380px;}
+#logon_box{float: left;position: relative;}
+#logon_box form{margin:0}
+#logon_box a {display:none;}
+#logon_box i{position: absolute;left: 10px;top: 13px;color:#fff;font-size:16px;}
+#logon_box .btn{padding:5px 10px 5px 26px;}
+#issues .btn,#issues a.btn:link{padding:5px 10px;}
+#cals{display: none;}
+#cal_last{display: none;}
+#cal-handle{float:right;margin:0}
+#simple_trailer_header{float: right;margin:0}
+#simple_header{float: left;clear: none;padding: 0;}
+#simple_header a.btn-info {color:#fff;font-weight: normal;margin: 0 5px 0 0;}
+div#dwm_header,
+#dwm_rooms{margin: 0;padding: 0}
+#dwm_header ul {margin:5px 10px;}
+#dwm_rooms li{display: inline;margin:0;padding: 0}
+#dwm_rooms li a{float: left;padding:3px 7px;margin: 0 8px 0 0;font-weight: normal;}
+#Form1 input[type='submit']{margin-top:-9px;}
+table.dwm_main {border-width:1px};
+.dwm_main th,.dwm_main td{padding:5px;}
+.form_admin fieldset {border:none}
+#areaChangeForm input.button,input[type='image']{width:auto!important;}
+legend {margin-bottom: 6px;line-height: normal;}
+#edit_room legend{border:none;}
+#dwm{margin-top:-6px;clear: both;}
+#dwm h2 {line-height: normal;font-weight:normal;font-size: 24px}
+.dwm_main th,.dwm_main td.row_labels {background-color: #689172 !important}
+.dwm_main th a:hover,.dwm_main td.row_labels a:hover{text-decoration: none;}
+#dwm_header{clear: both;}
+#dwm_header h3,#dwm_rooms h3{display: none;}
+#dwm_header ul{
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+#dwm_header .current{color: #fff}
+
+/* add entry form */
+#div_rooms,#div_type,#div_confirmation_status,#div_confirmation_status,#rep_info{}
+.edit_entry .form_general textarea {height: 6em;}
+#div_description,#div_type,#div_privacy_status,#div_confirmation_status{display: none;}
+#div_confirmation_status .group{margin-left:16px;}
+#div_confirmation_status .group label{margin-right:8px;}
+.dwm_main#day_main th.first_last {text-align:center;}
+form#logon{max-width:600px;clear: both;}
+form.form_admin {clear: none;margin:0;}
+.form_admin input.submit {margin:0}
+.form_admin div {clear:none;}
+.form_admin label{width: auto}
+.form_admin legend{margin-bottom: 10px}
+.form_admin fieldset {padding:0}
+.form_general{width:98%;max-width:800px;}
+.alert{padding: 8px 35px 8px 14px;
+margin-bottom: 18px;
+color: #C09853;
+text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+background-color: #FCF8E3;
+border: 1px solid #FBEED5;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;}
+
+.view_entry h3{background:#f1f1f1;padding:20px 10px 10px;margin-top:20px;max-width:400px;}
+.guest-user #view-entry-actions{display:none;}
