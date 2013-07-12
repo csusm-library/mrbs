@@ -1,6 +1,6 @@
 <?php
 
-// $Id$
+// $Id: datepicker.js.php 2687 2013-02-09 07:18:29Z cimorrison $
 
 require "../defaultincludes.inc";
 

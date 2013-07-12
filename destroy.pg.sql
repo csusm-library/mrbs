@@ -1,4 +1,4 @@
--- $Id$
+-- $Id: destroy.pg.sql 798 2008-04-13 19:59:24Z jberanek $
 --
 -- MRBS table destruction script for PostgreSQL 7.0 or higher
 -- This exists because I can never remember the sequence name magic.

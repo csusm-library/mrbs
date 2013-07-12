@@ -1,6 +1,6 @@
 <?php
 
-// $Id$
+// $Id: mrbs-rtl.css.php 2313 2012-07-02 11:12:56Z cimorrison $
 
 // Modifications to the standard CSS when using RTL languages (eg Hebrew)
 

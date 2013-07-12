@@ -1,6 +1,6 @@
 <?php
 
-// $Id$
+// $Id: functions.js.php 2678 2013-02-03 14:11:30Z cimorrison $
 
 require "../defaultincludes.inc";
 

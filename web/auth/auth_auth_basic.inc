@@ -1,6 +1,6 @@
 <?php
 
-/* $Id$
+/* $Id: auth_auth_basic.inc 2312 2012-07-02 10:15:14Z cimorrison $
  *
  * Authentication scheme that uses an Apache "auth basic" password file
  * for user authentication.

@@ -1,6 +1,6 @@
 <?php
 
-// $Id$
+// $Id: auth_ldap.inc 2312 2012-07-02 10:15:14Z cimorrison $
 
 /* ~~JFL 2003/11/12 By default, use the http session mechanism */
 if (!isset($auth['session']))

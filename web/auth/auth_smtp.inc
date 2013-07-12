@@ -1,6 +1,6 @@
 <?php
 
-/* $Id$
+/* $Id: auth_smtp.inc 2312 2012-07-02 10:15:14Z cimorrison $
  *
  * Authentication scheme that uses SMTP as the source for user
  * authentication. Requires the Net_SMTP Pear package

@@ -1,6 +1,6 @@
 <?php
 
-// $Id$
+// $Id: resizable.js.php 2716 2013-03-10 18:04:14Z cimorrison $
 
 require "../defaultincludes.inc";
 

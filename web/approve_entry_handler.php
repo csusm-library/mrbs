@@ -1,9 +1,9 @@
 <?php
-// $Id: approve_entry_handler.php 1907 2011-08-30 09:07:08Z cimorrison $
+// $Id: approve_entry_handler.php 2588 2012-12-12 18:17:37Z cimorrison $
 
 // Handles actions on bookings awaiting approval
 
-require_once "defaultincludes.inc";
+require "defaultincludes.inc";
 require_once "mrbs_sql.inc";
 require_once "functions_mail.inc";
 
@@ -22,6 +22,7 @@ $user = getUserName();
 
 // Initialise $mail_previous so that we can use it as a parameter for notifyAdminOnBooking
 $mail_previous = array();
+$start_times = array();
 
 // Give the return URL a query string if it doesn't already have one
 if (strpos($returl, '?') === FALSE)
@@ -56,8 +57,9 @@ if (isset($action))
         // Get the current booking data, before we change anything, for use in emails
         $mail_previous = mrbsGetBookingInfo($id, $series);
       }
-      $result = mrbsApproveEntry($id, $series);
-      if (!$result)
+      $start_times = mrbsApproveEntry($id, $series);
+      $result = ($start_times !== FALSE);
+      if ($result === FALSE)
       {
         $returl .= "&error=approve_failed";
       }
@@ -99,7 +101,7 @@ if (isset($action))
     // so that we will kniow whether to include iCalendar information in the email)
     get_area_settings($data['area_id']);
     // Send the email
-    $result = notifyAdminOnBooking($data, $mail_previous, $is_new_entry, $series, $action, $note);
+    $result = notifyAdminOnBooking($data, $mail_previous, $is_new_entry, $series, $start_times, $action, $note);
   }
 }
 

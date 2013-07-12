@@ -1,6 +1,6 @@
 <?php
 
-/* $Id$
+/* $Id: session_host.inc 2311 2012-07-02 09:37:47Z cimorrison $
  *
  * This is a slight variant of session_ip. 
  * Session management scheme that uses the DNS name of the computer

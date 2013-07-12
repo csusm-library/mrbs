@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# $Id$
+# $Id: crypt_passwd.pl 1640 2010-11-24 17:50:28Z jberanek $
 
 # Authentication script to use with MRBS's "ext" authentication
 # scheme. config.inc.php should include something like:

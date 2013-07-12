@@ -1,6 +1,6 @@
 <?php
 
-/* $Id$
+/* $Id: session_nt.inc 2311 2012-07-02 09:37:47Z cimorrison $
  *
  * Session management scheme that uses Windows NT domain users and Internet 
  * Information Server as the source for user authentication.

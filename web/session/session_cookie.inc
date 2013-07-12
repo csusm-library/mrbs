@@ -18,7 +18,7 @@
 *                                                                            *
 \*****************************************************************************/
 
-// $Id$
+// $Id: session_cookie.inc 2669 2013-01-31 20:23:08Z jberanek $
 
 // Bring in Blowfish class
 require_once(dirname(__FILE__).'/../Blowfish.php');

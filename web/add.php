@@ -1,8 +1,8 @@
 <?php
 
-// $Id: add.php 2263 2012-01-27 18:27:26Z cimorrison $
+// $Id: add.php 2338 2012-07-18 10:54:42Z cimorrison $
 
-require_once "defaultincludes.inc";
+require "defaultincludes.inc";
 require_once "mrbs_sql.inc";
 
 // Get non-standard form variables

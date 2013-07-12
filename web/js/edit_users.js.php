@@ -1,6 +1,6 @@
 <?php
 
-// $Id$
+// $Id: edit_users.js.php 2519 2012-10-22 16:53:57Z cimorrison $
 
 require "../defaultincludes.inc";
 

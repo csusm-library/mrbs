@@ -1,6 +1,6 @@
 <?php
 
-// $Id$
+// $Id: edit_area_room.js.php 2702 2013-02-15 17:01:16Z cimorrison $
 
 require "../defaultincludes.inc";
 

@@ -18,7 +18,7 @@
 // | @version   $Revision: 797 $.
 // +---------------------------------------------------------------------------+
 //
-// $Id: grab_globals.inc.php 2015 2011-09-27 09:42:47Z cimorrison $
+// $Id: grab_globals.inc.php 2540 2012-10-30 09:04:46Z cimorrison $
 
 
 // Gets a form variable.   Takes an optional third parameter which
@@ -197,6 +197,16 @@ if (!empty($_SERVER) && isset($_SERVER['HTTP_REFERER']))
 else if (!empty($HTTP_SERVER_VARS) && isset($HTTP_SERVER_VARS['HTTP_REFERER']))
 {
   $HTTP_REFERER = $HTTP_SERVER_VARS['HTTP_REFERER'];
+}
+
+// -- HTTP_USER_AGENT --
+if (!empty($_SERVER) && isset($_SERVER['HTTP_USER_AGENT']))
+{
+  $HTTP_USER_AGENT = $_SERVER['HTTP_USER_AGENT'];
+}
+else if (!empty($HTTP_SERVER_VARS) && isset($HTTP_SERVER_VARS['HTTP_USER_AGENT']))
+{
+  $HTTP_USER_AGENT = $HTTP_SERVER_VARS['HTTP_USER_AGENT'];
 }
 
 // -- HTTP_HOST --

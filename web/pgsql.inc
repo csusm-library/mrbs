@@ -1,5 +1,5 @@
 <?php
-// $Id: pgsql.inc 2277 2012-03-26 09:25:53Z cimorrison $
+// $Id: pgsql.inc 2733 2013-06-10 16:47:16Z cimorrison $
 
 // pgsql.inc - Simple PHP database support for PostgreSQL.
 // The standard MRBS database connection utilises the following configuration
@@ -58,6 +58,12 @@ function sql_pgsql_escape($str, $db_conn = null)
 }
 
 
+function sql_pgsql_quote($str)
+{
+  return '"' . $str . '"';
+}
+
+
 // Execute a non-SELECT SQL command (insert/update/delete).
 // Returns the number of tuples affected if OK (a number >= 0).
 // Returns -1 on error; use sql_error to get the error message.
@@ -107,7 +113,7 @@ function sql_pgsql_query1 ($sql, $db_conn = null)
 
 // Execute an SQL query. Returns a database-dependent result handle,
 // which should be passed back to sql_row or sql_row_keyed to get the results.
-// Returns 0 on error; use sql_error to get the error message.
+// Returns FALSE on error; use sql_error to get the error message.
 function sql_pgsql_query ($sql, $db_conn = null)
 {
   sql_pgsql_ensure_handle($db_conn);
@@ -296,6 +302,9 @@ function sql_pgsql_syntax_timestamp_to_unix($fieldname, $db_conn = null)
 
 
 // Returns the syntax for a case sensitive string "equals" function
+// NB:  This function is also assumed to do a strict comparison, ie
+// take account of training spaces.  (The '=' comparison in MySQL allows
+// trailing spaces, eg 'john' = 'john ').
 function sql_pgsql_syntax_casesensitive_equals($fieldname, $s, $db_conn = null)
 {
   sql_pgsql_ensure_handle($db_conn);

@@ -1,6 +1,6 @@
 <?php
 
-/* $Id$
+/* $Id: session_ip.inc 2311 2012-07-02 09:37:47Z cimorrison $
  *
  * Session management scheme that uses IP addresses to identify users.
  * Anyone who can access the server can make bookings.

@@ -1,6 +1,6 @@
 <?php 
 
-// $Id$
+// $Id: js.inc 2688 2013-02-10 11:37:04Z cimorrison $
 
 
 // We need to construct a standard query string that can be passed to the *.js.php

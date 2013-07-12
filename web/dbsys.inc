@@ -1,6 +1,6 @@
 <?php
 
-// $Id: dbsys.inc 2297 2012-05-23 09:17:11Z cimorrison $
+// $Id: dbsys.inc 2733 2013-06-10 16:47:16Z cimorrison $
 
 global $dbsys;
 
@@ -16,7 +16,7 @@ $tbl_variables = $db_tbl_prefix . "variables";
 $tbl_zoneinfo  = $db_tbl_prefix . "zoneinfo";
 
 
-$db_schema_version = 30;
+$db_schema_version = 35;
 $local_db_schema_version = 1;
 
 
@@ -74,6 +74,16 @@ function sql_escape($str)
   
   $f = "sql_${db_sys}_escape";
   return $f($str, $db_conn);
+}
+
+
+function sql_quote($str)
+{
+  global $dbsys;
+  
+  $db_sys = $dbsys;
+  $f = "sql_${db_sys}_quote";
+  return $f($str);
 }
 
 
@@ -155,7 +165,7 @@ function sql_query_array($sql)
 }
 
 
-// Run a SQL query, returns a result object
+// Run a SQL query, returns a result object or FALSE on failure
 function sql_query($sql)
 {
   if (func_num_args() > 1)
@@ -443,6 +453,9 @@ function sql_syntax_timestamp_to_unix($fieldname)
 
 // Returns the syntax for a case sensitive string "equals" function
 // (By default MySQL is case insensitive, whereas PostgreSQL is not)
+// NB:  This function is also assumed to do a strict comparison, ie
+// take account of training spaces.  (The '=' comparison in MySQL allows
+// trailing spaces, eg 'john' = 'john ').
 function sql_syntax_casesensitive_equals($fieldname, $s)
 {
   if (func_num_args() > 2)

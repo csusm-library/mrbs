@@ -1,6 +1,6 @@
 <?php
 
-/* $Id$
+/* $Id: auth_none.inc 2312 2012-07-02 10:15:14Z cimorrison $
  *
  * Dummy authentication scheme, that accepts any user.
  * Useful for using mrbs without authentication,

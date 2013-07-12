@@ -1,8 +1,8 @@
-/* $Id: mrbs-table.css 2174 2011-11-03 16:18:30Z cimorrison $ */
+/* $Id: mrbs-table.css 2343 2012-07-20 14:29:27Z cimorrison $ */
 
 /*
  *  File:         demo_table.css
- *  CVS:          $Id: mrbs-table.css 2174 2011-11-03 16:18:30Z cimorrison $
+ *  CVS:          $Id: mrbs-table.css 2343 2012-07-20 14:29:27Z cimorrison $
  *  Description:  CSS descriptions for DataTables demo pages
  *  Author:       Allan Jardine
  *  Created:      Tue May 12 06:47:22 BST 2009
@@ -562,4 +562,10 @@ div.box {
 table.display span {
   display: none;
 }
+
+table.display span.normal {
+  display: inline;
+}
+
+
 

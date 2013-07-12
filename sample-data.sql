@@ -1,4 +1,4 @@
--- $Id$
+-- $Id: sample-data.sql 798 2008-04-13 19:59:24Z jberanek $
 --
 -- Sample data - make some areas and rooms. (This used to be in tables.sql)
 -- This is meant to go into an empty database only!

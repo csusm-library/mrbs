@@ -1,6 +1,6 @@
 <?php
 
-// $Id: systemdefaults.inc.php 2300 2012-06-21 14:24:16Z cimorrison $
+// $Id: systemdefaults.inc.php 2717 2013-03-11 14:15:32Z cimorrison $
 
 /**************************************************************************
  *   MRBS system defaults file
@@ -48,7 +48,9 @@ $zoneinfo_update = TRUE;
 $zoneinfo_outlook_compatible = TRUE;
 
 // The VTIMEZONE definitions are cached in the database with an expiry time
-// of $zoneinfo_expiry seconds
+// of $zoneinfo_expiry seconds.   If your server does not have external internet
+// access set $zoneinfo_expiry to PHP_INT_MAX to prevent MRBS from trying to
+// update the VTIMEZONE definitions.
 $zoneinfo_expiry = 60*60*24*28;    // 28 days
 
 /*******************
@@ -56,7 +58,7 @@ $zoneinfo_expiry = 60*60*24*28;    // 28 days
  ******************/
 // Which database system: "pgsql"=PostgreSQL, "mysql"=MySQL,
 // "mysqli"=MySQL via the mysqli PHP extension
-$dbsys = "mysql";
+$dbsys = "mysqli";
 // Hostname of database server. For pgsql, can use "" instead of localhost
 // to use Unix Domain Sockets instead of TCP/IP.
 $db_host = "localhost";
@@ -258,6 +260,14 @@ $max_per_interval_global['year'] = 50;    // max 50 bookings per year in total
 $max_per_interval_global_enabled['future'] = FALSE;
 $max_per_interval_global['future'] = 100; // max 100 bookings in the future in total
 
+// Set the latest date for which you can make a booking.    This can be useful if you
+// want to set an absolute date, eg the end of term, beyond which bookings cannot be made.
+// If you want to set a relative date, eg no more than a week away, then this can be done
+// using the area settings.   Note that it is possible to have both a relative and absolute
+// date, eg "no more than a week away and in any case not past the end of term".
+// Note that bookings are allowed on the $max_booking_date, but not after it.
+$max_booking_date_enabled = FALSE;
+$max_booking_date = "2012-07-23";  // Must be a string in the format "yyyy-mm-dd"
 
 /******************
  * Display settings
@@ -296,7 +306,8 @@ $year_range['ahead'] = 5;
 // Formats used for dates and times.   For formatting options
 // see http://php.net/manual/function.strftime.php
 $strftime_format['date']         = "%A %d %B %Y";  // Used in Day view
-$strftime_format['dayname']      = "%A";           // Used in Month view and edit_entry form
+$strftime_format['dayname']      = "%A";           // Used in Month view
+$strftime_format['dayname_edit'] = "%a";           // Used in edit_entry form
 $strftime_format['dayname_cal']  = "%a";           // Used in mini calendars
 $strftime_format['month_cal']    = "%B";           // Used in mini calendars
 $strftime_format['mon']          = "%b";           // Used in date selectors
@@ -382,12 +393,17 @@ $default_room = 0;
 
 // Define clipping behaviour for the cells in the day and week views.
 // Set to TRUE if you want the cells in the day and week views to be clipped.   This
-// gives a table where all the rows have the same hight, regardless of content.
+// gives a table where all the rows have the same height, regardless of content.
 // Alternatively set to FALSE if you want the cells to expand to fit the content.
 // (FALSE not supported in IE6 and IE7 due to their incomplete CSS support)
 $clipped = TRUE;                
 
-// Define clipping behaviour for the cells in the month view.                           
+// Define clipping behaviour for the cells in the month view.
+// Set to TRUE if you want all entries to have the same height. The
+// short description may be clipped in this case. If set to FALSE,
+// each booking entry will be large enough to display all information.
+$clipped_month = TRUE;
+
 // Set to TRUE if you want the cells in the month view to scroll if there are too
 // many bookings to display; set to FALSE if you want the table cell to expand to
 // accommodate the bookings.   (NOTE: (1) scrolling doesn't work in IE6 and so the table
@@ -414,6 +430,10 @@ $text_input_max = 70;  // characters
 // receives focus.   If the number of options is less than 250 then they will be displayed
 // when 1 character is input and so on.    The array can be as long as you like.   If it
 // is empty then the options are displayed when 0 characters are input.
+
+// [Note: this variable is only applicable to older browsers that do not support the
+// <datalist> element and instead fall back to a JavaScript emulation.   Browsers that
+// support <datalist> present the options in a scrollable select box]
 $autocomplete_length_breaks = array(25, 250, 2500);
 
 
@@ -511,6 +531,24 @@ $working_days = array(1,2,3,4,5);  // Mon-Fri
 //                                          's' => 'Sandwiches',
 //                                          'h' => 'Hot Lunch');
 
+
+$datalist_options = array();
+// Instead of restricting the user to a fixed set of options using $select_options,
+// you can provide a list of options which will be used as suggestions, but the
+// user will also be able to type in their own input.   (MRBS presents these using
+// an HTML5 <datalist> element in browsers that support it, falling back to a
+// JavaScript emulation in browsers that don't - except for IE6 and below where
+// an ordinary text input field is presented).
+//
+// As with $select_options, the array can be either a simple indexed array or an
+// associative array, eg array('AL' => 'Alabama', 'AK' => 'Alaska', etc.).   However
+// some users might find an associative array confusing as the key is entered in the input
+// field when the corresponding value is selected.
+//
+// At the moment $datalist_options is only supported for the same fields as
+// $select_options (see above for details)
+
+
 $is_mandatory_field = array();
 // You can define custom entry fields to be mandatory by setting
 // items in the array $is_mandatory_field.   (Note that making a checkbox
@@ -537,6 +575,17 @@ $skip_default = FALSE;
 // are not mentionend in the array are appended at the end, in their usual 
 // order.
 $edit_entry_field_order = array();
+
+// You can so the same for the fields in the Search Criteria section of the report
+// form.  Valid entries in this array are 'report_start', 'report_end', 'areamatch',
+// 'roommatch', 'typematch', 'namematch', 'descrmatch', 'creatormatch', 'match_private',
+// 'match_confirmed', 'match_approved', plus any custom fields you may have defined.
+$report_search_field_order = array();
+
+// And the same for the fields in the Presentation Options section of the report form.
+// Valid entries in this array are 'output', 'output_format', 'sortby' and 'sumby'.
+$report_presentation_field_order = array();
+
 
 /***********************************************
  * Authentication settings - read AUTHENTICATION
@@ -886,7 +935,7 @@ $sendmail_settings['args'] = '';
  * SMTP settings
  */
 
-// These settings are only used with the "smtp" backend"
+// These settings are only used with the "smtp" backend
 $smtp_settings['host'] = 'localhost';  // SMTP server
 $smtp_settings['port'] = 25;           // SMTP port number
 $smtp_settings['auth'] = FALSE;        // Whether to use SMTP authentication
@@ -978,11 +1027,13 @@ $cli_language = "en";
  * Reports
  *************/
  
-// Default CSV file names
-$report_filename  = "report.csv";
-$summary_filename = "summary.csv";
+// Default file names
+$report_filename  = "report";
+$summary_filename = "summary";
 
 // CSV format
+// By default Excel expects a tab as the column separator, so if you are opening
+// CSV files with Excel you may want to change $csv_col_sep to be '\t'
 $csv_row_sep = "\n";  // Separator between rows/records
 $csv_col_sep = ",";   // Separator between columns/fields
 
@@ -1027,29 +1078,9 @@ $booking_types[] = "E";
 $booking_types[] = "I";
 
 // Default type for new bookings
-$default_type = "E";
+$default_type = "I";
 
 // Default description for new bookings
-$default_description = "Reserved";
-
-// Resolution - what blocks can be booked, in seconds.
-// Default is half an hour: 1800 seconds.
-$resolution = (60 * 60);  // DEFAULT VALUE FOR NEW AREAS
-
-// The default settings below (along with the 30 minute resolution above)
-// give you 24 half-hourly slots starting at 07:00, with the last slot
-// being 18:30 -> 19:00
-
-// The beginning of the first slot of the day (DEFAULT VALUES FOR NEW AREAS)
-$morningstarts         = 8;   // must be integer in range 0-23
-$morningstarts_minutes = 0;   // must be integer in range 0-59
-
-// The beginning of the last slot of the day (DEFAULT VALUES FOR NEW AREAS)
-$eveningends           = 17;  // must be integer in range 0-23
-$eveningends_minutes   = 00;   // must be integer in range 0-59
-
-// DEFAULT VALUES FOR NEW AREAS
-
-$max_book_ahead_secs = 60*60*24*14;  // (seconds) no more than one week ahead
+$default_description = "";
 
 ?>

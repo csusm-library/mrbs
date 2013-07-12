@@ -1,6 +1,6 @@
 <?php
 
-// $Id: standard_vars.inc.php 2212 2011-12-28 17:12:49Z cimorrison $
+// $Id: standard_vars.inc.php 2567 2012-11-30 22:13:47Z cimorrison $
 
 // Gets the standard variables of $day, $month, $year, $area and $room
 // Checks that they are valid and assigns sensible defaults if not
@@ -38,7 +38,7 @@ else
   while (!checkdate($month, $day, $year))
   {
     $day--;
-    if ($day == 0)
+    if ($day <= 0)
     {
       $day   = date("d");
       $month = date("m");

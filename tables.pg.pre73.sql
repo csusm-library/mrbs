@@ -1,4 +1,4 @@
--- $Id$
+-- $Id: tables.pg.pre73.sql 2511 2012-10-19 15:17:37Z cimorrison $
 --
 -- MRBS table creation script - for PostgreSQL
 --

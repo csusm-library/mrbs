@@ -1,12 +1,12 @@
 <?php
-// $Id: mrbs_auth.inc 2263 2012-01-27 18:27:26Z cimorrison $
+// $Id: mrbs_auth.inc 2471 2012-10-04 08:44:23Z cimorrison $
 
 // include the authentification wrappers
-require_once "auth_$auth[type].inc";
+require_once "auth/auth_$auth[type].inc";
 
 if (isset($auth['session']))
 {
-  require_once "session_$auth[session].inc";
+  require_once "session/session_$auth[session].inc";
 }
 
 // MINIMUM PAGE ACCESS LEVELS
@@ -14,6 +14,7 @@ if (isset($auth['session']))
 // These pages are open to the public by default as they only contain
 // read features.   However if $auth['deny_public_access'] is TRUE then
 // access to the public is denied
+$page_level['check_slot_ajax.php']       = ($auth['deny_public_access']) ? 1 : 0;
 $page_level['day.php']                   = ($auth['deny_public_access']) ? 1 : 0;
 $page_level['help.php']                  = ($auth['deny_public_access']) ? 1 : 0;
 $page_level['month.php']                 = ($auth['deny_public_access']) ? 1 : 0;

@@ -1,5 +1,5 @@
 <?php // -*-mode: PHP; coding:utf-8;-*-
-// $Id$
+// $Id: lang.pl 2511 2012-10-19 15:17:37Z cimorrison $
 
 // Ten plik zawiera kod PHP, który określa język konkretnych stringów.
 // Domyślne stringi pochodzą z lang.en, i jakiekolwiek zmiany w konkretnych

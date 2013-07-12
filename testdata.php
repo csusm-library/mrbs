@@ -1,6 +1,6 @@
 <?php
 
-// $Id$
+// $Id: testdata.php 1640 2010-11-24 17:50:28Z jberanek $
 
 // This script initialises the database with some random data
 require_once "grab_globals.inc.php";

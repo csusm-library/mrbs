@@ -1,8 +1,8 @@
 <?php
 
-// $Id: help.php 2287 2012-04-10 09:58:31Z jberanek $
+// $Id: help.php 2712 2013-03-07 16:29:04Z cimorrison $
 
-require_once "defaultincludes.inc";
+require "defaultincludes.inc";
 require_once "version.inc";
 
 // Check the user is authorised for this page
@@ -23,7 +23,7 @@ echo "</table>\n";
 
 echo "<p>\n" . get_vocab("browserlang") .":\n";
 
-echo implode(", ", array_keys($langs));
+echo htmlspecialchars(implode(", ", array_keys(get_language_qualifiers())));
 
 echo "\n</p>\n";
 
@@ -34,7 +34,7 @@ echo get_vocab("please_contact") . '<a href="mailto:' . htmlspecialchars($mrbs_a
   . "</a> " . get_vocab("for_any_questions") . "\n";
 echo "</p>\n";
  
-require_once "site_faq" . $faqfilelang . ".html";
+require_once "site_faq/site_faq" . $faqfilelang . ".html";
 
 output_trailer();
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-// $Id$
+// $Id: refresh.js.php 2716 2013-03-10 18:04:14Z cimorrison $
 
 // Implements Ajax refreshing of the calendar view.   Only necessary, obviously,
 // if $refresh_rate has been set to something non-zero

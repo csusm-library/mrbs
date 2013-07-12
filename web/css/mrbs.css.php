@@ -1,6 +1,6 @@
 <?php 
 
-// $Id$
+// $Id: mrbs.css.php 2598 2012-12-17 17:06:46Z cimorrison $
 
 require_once "../systemdefaults.inc.php";
 require_once "../config.inc.php";

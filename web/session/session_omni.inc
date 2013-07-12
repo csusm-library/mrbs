@@ -1,6 +1,6 @@
 <?php
 
-/* $Id$
+/* $Id: session_omni.inc 2311 2012-07-02 09:37:47Z cimorrison $
  *
  * Session management scheme that relies on OmniHttpd security for user 
  * authentication. THIS is suitable for few users because we have to create all

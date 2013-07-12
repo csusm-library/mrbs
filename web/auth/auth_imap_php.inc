@@ -1,6 +1,6 @@
 <?php
 
-/* $Id$
+/* $Id: auth_imap_php.inc 2312 2012-07-02 10:15:14Z cimorrison $
  *
  * Authentication scheme that uses IMAP as the source for user
  * authentication. It requires you to have the PHP 'imap' extension

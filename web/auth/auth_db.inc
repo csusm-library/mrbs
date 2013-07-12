@@ -13,7 +13,7 @@
 *
 ******************************************************************************/
 
-// $Id$
+// $Id: auth_db.inc 2408 2012-09-12 09:25:17Z cimorrison $
 
 /* session_php.inc and session_cookie.inc will add a link to the user list
     in the logon box, if the value $user_list_link is set. */

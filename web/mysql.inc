@@ -1,5 +1,5 @@
 <?php
-// $Id: mysql.inc 2277 2012-03-26 09:25:53Z cimorrison $
+// $Id: mysql.inc 2733 2013-06-10 16:47:16Z cimorrison $
 
 // mysql.inc - Simple PHP database support for MySQL.
 // The standard MRBS database connection utilises the following configuration
@@ -50,6 +50,12 @@ function sql_mysql_escape($str, $db_conn = null)
 }
 
 
+function sql_mysql_quote($str)
+{
+  return '`' . $str . '`';
+}
+
+
 // Execute a non-SELECT SQL command (insert/update/delete).
 // Returns the number of tuples affected if OK (a number >= 0).
 // Returns -1 on error; use sql_error to get the error message.
@@ -92,7 +98,7 @@ function sql_mysql_query1 ($sql, $db_conn = null)
 
 // Execute an SQL query. Returns a database-dependent result handle,
 // which should be passed back to sql_row or sql_row_keyed to get the results.
-// Returns 0 on error; use sql_error to get the error message.
+// Returns FALSE on error; use sql_error to get the error message.
 function sql_mysql_query ($sql, $db_conn = null)
 {
   sql_mysql_ensure_handle($db_conn);
@@ -203,8 +209,16 @@ function sql_mysql_mutex_lock($name, $db_conn = null)
   sql_mysql_ensure_handle($db_conn);
 
   global $sql_mysql_mutex_shutdown_registered, $sql_mysql_mutex_unlock_name;
-  if (!sql_mysql_query1("SELECT GET_LOCK('$name', 20)", $db_conn))
+  
+  $r = sql_mysql_query("SELECT GET_LOCK('$name', 20)", $db_conn);
+  if (!$r)
   {
+    // Distinguish between a timeout (GET_LOCK returns 0)
+    // and an error (GET_LOCK returns NULL)
+    if (!isset($r))
+    {
+      trigger_error(sql_mysql_error($db_conn), E_USER_WARNING);
+    }
     return 0;
   }
   $sql_mysql_mutex_unlock_name = $name;
@@ -272,6 +286,9 @@ function sql_mysql_syntax_timestamp_to_unix($fieldname, $db_conn = null)
 
 // Returns the syntax for a case sensitive string "equals" function
 // (By default MySQL is case insensitive, so we force a binary comparison)
+// NB:  This function is also assumed to do a strict comparison, ie
+// take account of training spaces.  (The '=' comparison in MySQL allows
+// trailing spaces, eg 'john' = 'john ').
 function sql_mysql_syntax_casesensitive_equals($fieldname, $s, $db_conn = null)
 {
   sql_mysql_ensure_handle($db_conn);

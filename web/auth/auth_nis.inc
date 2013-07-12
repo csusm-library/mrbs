@@ -1,6 +1,6 @@
 <?php
 
-/* $Id$
+/* $Id: auth_nis.inc 2312 2012-07-02 10:15:14Z cimorrison $
  *
  * Authentication scheme that uses NIS as the source for user
  * authentication.

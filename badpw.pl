@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# $Id$
+# $Id: badpw.pl 1640 2010-11-24 17:50:28Z jberanek $
 
 # Read AUTHENTICATION for more information
 # about this script

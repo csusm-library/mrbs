@@ -1,6 +1,6 @@
 <?php
 
-// $Id$
+// $Id: edit_entry.js.php 2703 2013-02-15 19:04:09Z cimorrison $
 
 require "../defaultincludes.inc";
 

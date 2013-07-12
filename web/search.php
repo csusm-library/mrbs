@@ -1,7 +1,7 @@
 <?php
-// $Id: search.php 2300 2012-06-21 14:24:16Z cimorrison $
+// $Id: search.php 2558 2012-11-05 16:51:11Z cimorrison $
 
-require_once "defaultincludes.inc";
+require "defaultincludes.inc";
 
 
 function generate_search_nav_html($search_pos, $total, $num_records, $search_str)
@@ -156,7 +156,7 @@ if (!$ajax)
       <legend><?php echo get_vocab("advanced_search") ?></legend>
         <div id="div_search_str">
           <label for="search_str"><?php echo get_vocab("search_for") ?>:</label>
-          <input type="search" id="search_str" name="search_str">
+          <input type="search" id="search_str" name="search_str" required>
         </div>   
         <div id="div_search_from">
           <?php
@@ -214,7 +214,7 @@ foreach ($fields as $field)
       {
         // We have to use strpos() rather than stripos() because we cannot
         // assume PHP5
-        if (strpos(strtolower($value), strtolower($search_str)) !== FALSE)
+        if (($key !== '') && (strpos(strtolower($value), strtolower($search_str)) !== FALSE))
         {
           $sql_pred .= " OR E." . $field['name'] . "='" . sql_escape($key) . "'";
         }
@@ -327,9 +327,10 @@ if (!$ajax)
   echo "<table id=\"search_results\" class=\"admin_table display\">\n";
   echo "<thead>\n";
   echo "<tr>\n";
+  // We give some columns an stype data value so that the JavaScript knows how to sort them
   echo "<th>" . get_vocab("namebooker") . "</th>\n";
   echo "<th>" . get_vocab("createdby") . "</th>\n";
-  echo "<th>" . get_vocab("start_date") . "</th>\n";
+  echo "<th><span class=\"normal\" data-stype=\"title-numeric\">" . get_vocab("start_date") . "</span></th>\n";
   echo "<th>" . get_vocab("description") . "</th>\n";
   echo "</tr>\n";
   echo "</thead>\n";

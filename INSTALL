@@ -521,4 +521,4 @@ directory accessible to your web server. Anyone running this will add a
 large number of test entries to your database, regardless of
 authentication, and book all your rooms to people you've never heard of.
 
-$Id$
+$Id: INSTALL 2273 2012-03-09 12:14:11Z cimorrison $

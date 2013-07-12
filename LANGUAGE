@@ -37,4 +37,4 @@ in your single-byte encoding (e.g. iso-8859-1) you should change your
 language's encoding to utf-8, and then you can use whatever characters you
 would like, encoded in utf-8.
 
-$Id$
+$Id: LANGUAGE 937 2008-10-16 21:29:27Z jberanek $

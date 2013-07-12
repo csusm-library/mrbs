@@ -1,6 +1,6 @@
 <?php // -*-mode: PHP; coding:utf-8;-*-
 
-// $Id$
+// $Id: lang.de 2591 2012-12-14 20:49:45Z tbleher $
 
 // This file contains PHP code that specifies language specific strings
 // The default strings come from lang.en, and anything in a locale

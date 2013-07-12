@@ -1,5 +1,5 @@
 <?php // -*-mode: PHP; coding:utf8;-*-
-// $Id$
+// $Id: lang.sv 2711 2013-03-07 16:13:27Z cimorrison $
 
 // This file contains PHP code that specifies language specific strings
 // The default strings come from lang.en, and anything in a locale

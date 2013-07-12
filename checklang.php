@@ -1,5 +1,5 @@
 <?php
-  // $Id$
+  // $Id: checklang.php 2574 2012-12-09 09:24:00Z tbleher $
 ?>
 <html>
 <head><title>Language File Checker</title></head>

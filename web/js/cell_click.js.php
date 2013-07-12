@@ -1,6 +1,6 @@
 <?php
 
-// $Id$
+// $Id: cell_click.js.php 2383 2012-08-14 15:53:50Z cimorrison $
 
 require "../defaultincludes.inc";
 

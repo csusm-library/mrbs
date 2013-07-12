@@ -1,6 +1,6 @@
 <?php
 
-// $Id$
+// $Id: convert_db_to_utf8.php 1753 2011-01-26 16:04:51Z jberanek $
 
 // This script converts text in the database from a particular encoding
 // to UTF-8

@@ -1,7 +1,7 @@
 <?php
-// $Id: del.php 2287 2012-04-10 09:58:31Z jberanek $
+// $Id: del.php 2338 2012-07-18 10:54:42Z cimorrison $
 
-require_once "defaultincludes.inc";
+require "defaultincludes.inc";
 
 // Get non-standard form variables
 $type = get_form_var('type', 'string');
