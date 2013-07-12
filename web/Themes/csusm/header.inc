@@ -67,11 +67,8 @@ function print_theme_header($day, $month, $year, $area, $room)
     <?php
     require_once "js.inc";
     ?>
-    <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap-dropdown.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
-        $('.dropdown-toggle').dropdown();
         $('.dwm_main').addClass('table table-bordered');
         $('.trailer').first().attr('id','simple_trailer_header');
         $('#simple_trailer_header #simple').attr('id','simple_header');
@@ -90,6 +87,8 @@ function print_theme_header($day, $month, $year, $area, $room)
         $('#areaChangeForm input[type=delete]').addClass('btn btn-danger');
         $('#edit_room').addClass('well');
         $('#cals').before('<div id="cal-handle" class="btn btn-info"><i class="icon-circle-arrow-down icon-white"></i> View MiniCal</div>');
+        $('#company #Form1').delay(1000).fadeIn(1000);
+        $('.dropdown-toggle').dropdown();
         $("#cal-handle").appendTo("#simple_trailer_header");
         $("#cal-handle").click(function(){
           if($("#cals").hasClass('open')){
@@ -104,6 +103,8 @@ function print_theme_header($day, $month, $year, $area, $room)
         });
       });
     </script>
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap-dropdown.js"></script>
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-4199304-3']);
@@ -149,24 +150,24 @@ function print_theme_header($day, $month, $year, $area, $room)
           ?>
         </ul>
         <form action="day.php" method="get" id="Form1" class="navbar-search pull-left">
-            <div><i class="icon-calendar icon-white"></i>
-              <?php
-              // Give the form id as the optional fifth parameter because we want
-              // the form to be automatically submitted when the datepicker is closed
-              genDateSelector("", $day, $month, $year, "Form1");
-              if (!empty($area)){
-                echo "<input type=\"hidden\" name=\"area\" value=\"$area\">\n";
-              }
-              if (!empty($room)){
-                echo "<input type=\"hidden\" name=\"room\" value=\"$room\">\n";
-              }
-              // Although the datepicker will automatically go to the new date when
-              // the date is changed, we still need a submit button because there
-              // are occasions when you want to go to the date without changing it -
-              // for example when you've been on a Search or Report page
-              echo "<input type=\"submit\" value=\"" . get_vocab("goto") . "\" class=\"btn\"/>\n";
-              ?>
-             </div>
+          <div><i class="icon-calendar icon-white"></i>
+            <?php
+            // Give the form id as the optional fifth parameter because we want
+            // the form to be automatically submitted when the datepicker is closed
+            genDateSelector("", $day, $month, $year, "Form1");
+            if (!empty($area)){
+              echo "<input type=\"hidden\" name=\"area\" value=\"$area\">\n";
+            }
+            if (!empty($room)){
+              echo "<input type=\"hidden\" name=\"room\" value=\"$room\">\n";
+            }
+            // Although the datepicker will automatically go to the new date when
+            // the date is changed, we still need a submit button because there
+            // are occasions when you want to go to the date without changing it -
+            // for example when you've been on a Search or Report page
+            echo "<input type=\"submit\" value=\"" . get_vocab("goto") . "\" class=\"btn\"/>\n";
+            ?>
+           </div>
         </form>
         <ul class="nav"><li class="divider-vertical"></li></ul>
           <?php
@@ -219,16 +220,8 @@ function print_theme_header($day, $month, $year, $area, $room)
         if (!empty($room)){
           $query_str .= "&amp;room=$room";
         }
-  ?>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-white"></i> Need Help?<b class="caret"></b></a>
-            <ul class="dropdown-menu" id="chat-panel">
-              <li><iframe scrolling="no" frameborder="0" src="https://lib.csusm.edu/webdev/chat/circ.php" id="chatFrame">https://lib.csusm.edu/webdev/chat/circ.php</iframe></li>
-            </ul>
-          </li>
-  <?php
-        echo "<li id=\"help\">\n";http://biblio.csusm.edu/external/group-study-rooms/group-study-rooms
-        //echo "<a href=\"help.php?$query_str\"><i class=\"icon-info-sign icon-white\"></i> " . get_vocab("help") . "</a>\n";
+        echo "<li id=\"need-help\"><a href=\"/external/contact-library/email-us?area=libcirc@csusm.edu\"><i class=\"icon-question-sign icon-white\"></i> Need Help?</a></li>";
+        echo "<li id=\"room-use-info\">\n";
         echo "<a href=\"http://biblio.csusm.edu/external/group-study-rooms/group-study-rooms\"><i class=\"icon-info-sign icon-white\"></i> Room Use Info</a>\n";
         echo "</li>\n";
         echo "<li class=\"divider-vertical\"></li>";

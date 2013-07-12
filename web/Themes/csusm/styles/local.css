@@ -37,6 +37,7 @@ a:link,a:visited {color: #08C;text-decoration: none!important;}
 a:hover{text-decoration: none;}
 .navbar .nav > li > a {text-shadow:none;}
 #company li [class^="icon-"], #company li [class*=" icon-"] {font-size:16px;}
+#company #Form1{display: none; max-width:200px;min-width: 180px;overflow: hidden;}
 #banner .dropdown-menu a {color:#333}
 #banner .dropdown-menu a:hover{color:#fff}
 #chat-panel iframe{height:380px;}
