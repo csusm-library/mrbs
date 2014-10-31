@@ -39,7 +39,8 @@ if (!$display_calendar_bottom)
 {
   minicals($year, $month, $day, $area, $room, 'day');
 }
-
+$this_area_customhtml = sql_query1("SELECT custom_html FROM $tbl_area WHERE id=$area AND disabled=0 LIMIT 1");
+echo $this_area_customhtml;
 echo "</div>\n";
 
 

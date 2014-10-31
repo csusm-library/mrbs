@@ -76,7 +76,16 @@ legend {margin-bottom: 6px;line-height: normal;}
   padding: 0;
   margin: 0;
 }
-#dwm_header .current{color: #fff}
+#dwm_header .nav .current{color: #fff}
+#dwm_header .calendar a.current{
+  color: #08C;
+  font-weight: normal;
+}
+.calendar #sticky_day a.current {
+font-weight: bold;
+color: #F06;
+}
+
 
 /* add entry form */
 #div_rooms,#div_type,#div_confirmation_status,#div_confirmation_status,#rep_info{}

@@ -45,6 +45,7 @@ echo "</div>\n";
 // Show area and room:
 // Get the area and room names
 $this_area_name = sql_query1("SELECT area_name FROM $tbl_area WHERE id=$area AND disabled=0 LIMIT 1");
+$this_area_customhtml = sql_query1("SELECT custom_html FROM $tbl_area WHERE id=$area AND disabled=0 LIMIT 1");
 $this_room_name = sql_query1("SELECT room_name FROM $tbl_room WHERE id=$room AND disabled=0 LIMIT 1");
 // The room is invalid if it doesn't exist, or else it has been disabled, either explicitly
 // or implicitly because the area has been disabled
@@ -58,6 +59,7 @@ if ($this_room_name === -1)
 }
 echo "<div id=\"dwm\">\n";
 echo "<h2>" . htmlspecialchars("$this_area_name - $this_room_name") . "</h2>\n";
+echo "<div class=\"area-desc\">" . $this_area_customhtml . "</div>";
 echo "</div>\n";
 
 //y? are year, month and day of the previous week.
