@@ -1121,7 +1121,23 @@ else
 <form class="form_general" id="main" action="edit_entry_handler.php" method="post">
   <fieldset>
   <legend><?php echo get_vocab($token); ?></legend>
-
+  <div class="row">
+    <div id="verify_hours" class="alert alert-info span7">
+      <?php
+        $startdate = getbookingdate($start_time);
+        //print_r($startdate);
+        $startyear = $startdate['year'];
+        $startmonth = $startdate['mon'];
+        $startmday = $startdate['mday'];
+        $jsonquery = "https://biblio.csusm.edu/library-hours/feed/specific/json/$startyear-$startmonth-$startmday";
+        //echo $jsonquery;
+        $content=file_get_contents($jsonquery);
+        $data=json_decode($content);
+        echo "<h4>YOU SELECTED: " . $data['0']->field_date_entry_value->content . "</h4><br/>";
+        echo "<h4>LIBRARY HOURS FOR THAT DAY:<br/>" . $data['0']->title->content . ":" . $data['0']->field_openingtime_value->content . " - ". $data['0']->field_closingtime_value->content . "</h4>";
+      ?>
+    </div>
+  </div>
 <?php
 
 foreach ($edit_entry_field_order as $key)
